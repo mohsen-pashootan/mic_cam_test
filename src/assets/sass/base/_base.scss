@@ -1,0 +1,108 @@
+* {
+  outline: none !important;
+  font-family: roboto !important;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  margin: 0px;
+  background-color: getColor(base);
+  color: getColor(text);
+  text-align: right;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+input {
+  font-family: roboto !important;
+}
+
+button:disabled,
+button[disabled] {
+  opacity: 0.5;
+}
+
+button,
+button:hover {
+  border: none;
+  outline: none;
+}
+
+.row .col {
+  float: right;
+}
+
+.row-left {
+  .col {
+    float: left;
+  }
+}
+
+.backdrop {
+  background-color: white;
+}
+
+.en-font {
+  font-family: rocket !important;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  margin: 5px;
+  padding: 5px;
+  float: left;
+}
+
+::-webkit-scrollbar-track {
+  margin: 5px;
+  padding: 5px;
+}
+
+::-moz-scrollbar-track {
+  background: white;
+  margin: 5px;
+  padding: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  margin: 5px;
+  padding: 5px;
+}
+
+::-moz-scrollbar-thumb {
+  background: white;
+  margin: 5px;
+  padding: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
+  padding: 5px;
+}
+
+::-moz-scrollbar-thumb:hover {
+  background: white;
+  padding: 5px;
+}
