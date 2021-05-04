@@ -30,7 +30,7 @@ export default function useMicCamTest({
   let audioSelect = [_audioSelect];
   let videoSelect = [_videoSelect];
   let canvasContext = _audioMeter.current?.getContext("2d");
-  store.dispatch(userDevices.micCanvasRef(canvasContext));
+  // store.dispatch(userDevices.micCanvasRef(canvasContext));
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   audioContext = new AudioContext();
 

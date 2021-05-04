@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function Home() {
   const [modalTest, setModaltest] = useState(false);
-  const { micCanvas } = useSelector((state) => state.selectDeviceStatus);
+  // const { micCanvas } = useSelector((state) => state.selectDeviceStatus);
 
   const handleTestModalActivate = () => {
     setModaltest(!modalTest);
