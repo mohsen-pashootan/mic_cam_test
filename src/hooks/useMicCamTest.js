@@ -90,6 +90,7 @@ export default function useMicCamTest({
     setHasStream(true);
     window.stream = stream; // make stream available to console
     videoElement.current.srcObject = stream ? stream : "";
+    videoElement.current.volume = 0;
     mediaStreamSource = audioContext.createMediaStreamSource(stream);
     meter = createAudioMeter(audioContext);
     mediaStreamSource.connect(meter);
