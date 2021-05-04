@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import MicCamTest from "../../components/micCamTest/micCamTest";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const [modalTest, setModaltest] = useState(false);
+  const { micCanvas } = useSelector((state) => state.selectDeviceStatus);
 
   const handleTestModalActivate = () => {
     setModaltest(!modalTest);
@@ -28,6 +30,7 @@ export default function Home() {
         muted={true}
         id={localStorage.getItem("selectedCam")}
       />
+      {/* <canvas ref={micCanvas} width="179" height="8"></canvas> */}
       {modalTest && (
         <MicCamTest
           onSubmitTestDevice={handleSubmitTestDevice}

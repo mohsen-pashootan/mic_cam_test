@@ -30,6 +30,7 @@ export default function useMicCamTest({
   let audioSelect = [_audioSelect];
   let videoSelect = [_videoSelect];
   let canvasContext = _audioMeter.current?.getContext("2d");
+  store.dispatch(userDevices.micCanvasRef(canvasContext));
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   audioContext = new AudioContext();
 
@@ -66,8 +67,11 @@ export default function useMicCamTest({
       : console.log("No devices found!");
     const vidDev = deviceInfos.filter((dev) => dev.kind === "videoinput");
     _videoDevices.current = vidDev;
+    store.dispatch(userDevices.initVideoDevices(vidDev));
     const audDev = deviceInfos.filter((dev) => dev.kind === "audioinput");
     _audioDevices.current = audDev;
+    store.dispatch(userDevices.initAudioDevices(audDev));
+
     if (
       _videoDevices.current?.length === 0 &&
       _audioDevices.current?.length === 0
@@ -112,6 +116,7 @@ export default function useMicCamTest({
     }
     const audioSource = audioSelect[0]?.current?.value;
     const videoSource = videoSelect[0]?.current?.value;
+
     localStorage.setItem("selectedMic", audioSource);
     localStorage.setItem("selectedCam", videoSource);
     const constraints = {
@@ -126,6 +131,7 @@ export default function useMicCamTest({
         ? true
         : false,
     };
+
     return await navigator.mediaDevices
       .getUserMedia(constraints)
       .then(gotStream)
@@ -144,7 +150,7 @@ export default function useMicCamTest({
   //#2' Because IOS and Firefox do not support navigator.permissions.query or its camera enum we have to use a state
   useEffect(() => {
     if (hasStream) {
-      store.dispatch(userDevices.activateMic(true));
+      store.dispatch(userDevices.activateMic(false));
       store.dispatch(userDevices.activateCam(false));
     }
   }, [hasStream]);

@@ -21,6 +21,7 @@ const initialState = {
   initVideoDev: [],
   publisherErrorMessage: "",
   getDeviceErrorMessage: "",
+  micCanvas: {},
 };
 
 const selectDeviceStatus = (state = initialState, action) => {
@@ -44,6 +45,8 @@ const selectDeviceStatus = (state = initialState, action) => {
       return { ...state, getDeviceErrorMessage: action.payload };
     case "NO_DEVICES_FOUND":
       return { ...state, noDeviceFound: action.payload };
+    case "MIC_CANVAS_REF":
+      return { ...state, micCanvas: action.payload };
     default: {
       return state;
     }

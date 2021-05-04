@@ -53,3 +53,10 @@ export const noInputDevicesFound = (status) => {
     payload: status,
   };
 };
+
+export const micCanvasRef = (status) => {
+  return {
+    type: "MIC_CANVAS_REF",
+    payload: status,
+  };
+};

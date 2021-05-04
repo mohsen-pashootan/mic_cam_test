@@ -151,9 +151,6 @@ function MicCamTest(props) {
                     playsInline
                   ></video>
                   <>
-                    <span className="micCamTest__cam-select--iconDective">
-                      {/* <FontIcon icon="mute-video" /> */}
-                    </span>
                     {!getDeviceErrorMessage && !noCamDevices && !noDevices && (
                       <p className="font-size-8px">Cam Disabled</p>
                     )}
@@ -186,7 +183,7 @@ function MicCamTest(props) {
                     return (
                       <option
                         key={key}
-                        value={e.device && e.device}
+                        value={e.deviceId && e.deviceId}
                         className="font-family-roboto font-size-12px"
                       >
                         {e.label
@@ -212,7 +209,6 @@ function MicCamTest(props) {
                       : ""
                   }`}
                 >
-                  {/* <FontIcon icon="mic" /> */}
                   <h6>Microphone</h6>
                   <span className="micCamTest__switchToggle">
                     <SwitchToggle
@@ -238,20 +234,6 @@ function MicCamTest(props) {
                 </label>
                 <div className="micCamTest__test-container micCamTest__test-container__mic-cam-deactive">
                   <>
-                    {getDeviceErrorMessage || noMicDevices ? (
-                      <span className="micCamTest__cam-select--iconDective">
-                        {/* <FontIcon icon="mute" /> */}
-                      </span>
-                    ) : Default_Audio_Active ? (
-                      <span className="micCamTest__cam-select--iconActive">
-                        {/* <FontIcon icon="mic" /> */}
-                      </span>
-                    ) : (
-                      <span className="micCamTest__cam-select--iconDective">
-                        {/* <FontIcon icon="mute" /> */}
-                      </span>
-                    )}
-
                     {!getDeviceErrorMessage &&
                       !noMicDevices &&
                       !noDevices &&
@@ -274,13 +256,13 @@ function MicCamTest(props) {
                           }`}
                         ></canvas>
 
-                        {/* <span
+                        <span
                           className={`${
                             !Default_Audio_Active
                               ? "micCamTest__fakeCanvas"
                               : "d-none"
                           }`}
-                        ></span> */}
+                        ></span>
                       </>
                     )}
                   </>
@@ -307,7 +289,7 @@ function MicCamTest(props) {
                 >
                   {initAudioDev?.map((e, key) => {
                     return (
-                      <option key={key} value={e.device && e.device}>
+                      <option key={key} value={e.deviceId && e.deviceId}>
                         {e.label
                           ? e.label
                           : hasStream
