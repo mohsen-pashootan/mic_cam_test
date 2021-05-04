@@ -90,7 +90,8 @@ function MicCamTest(props) {
             className="micCamTest__modal"
           >
             <div className="micCamTest__header">
-              <bdi>
+              <bdi className="micCamTest__header--first">
+                <img src="webrtc.png" alt="webrtc" />
                 <h5 className="micCamTest__header--welcome">
                   <>TEST YOUR MIC OR CAM</>
                 </h5>
@@ -105,8 +106,8 @@ function MicCamTest(props) {
                 <bdi>
                   {!noDevices &&
                     (!hasStream
-                      ? "لطفا دسترسی مرورگر به میکروفن و وبکم را 'Allow' کنید و سپس تنظیمات میکروفن و وبکم را انجام دهید"
-                      : "لطفا تنظیمات دوربین و میکروفون را انجام دهید")}
+                      ? "Allow Access to cam and mic"
+                      : "Try your cam and mic devices")}
                 </bdi>
               </p>
             </div>
@@ -124,8 +125,8 @@ function MicCamTest(props) {
                       : ""
                   }`}
                 >
-                  <i className="fa fa-video-camera" aria-hidden="true" />
-                  <h6>دوربین</h6>
+                  {/* <i className="fa fa-video-camera" aria-hidden="true" /> */}
+                  <h6>Camera</h6>
                   <span className="micCamTest__switchToggle">
                     <SwitchToggle
                       name="camActivatex"
@@ -154,14 +155,14 @@ function MicCamTest(props) {
                       {/* <FontIcon icon="mute-video" /> */}
                     </span>
                     {!getDeviceErrorMessage && !noCamDevices && !noDevices && (
-                      <p className="font-size-8px">دوربین غیر فعال است</p>
+                      <p className="font-size-8px">Cam Disabled</p>
                     )}
                     {(noCamDevices || noDevices) && (
-                      <p className="font-size-8px">دوربین شناسایی نشد</p>
+                      <p className="font-size-8px">No Cam Detected</p>
                     )}
                   </>
                 </div>
-                <p>انتخاب دوربین</p>
+                <p>Select Camera</p>
                 <select
                   id="videoSource"
                   ref={_videoSelect}
@@ -212,7 +213,7 @@ function MicCamTest(props) {
                   }`}
                 >
                   {/* <FontIcon icon="mic" /> */}
-                  <h6>میکروفون</h6>
+                  <h6>Microphone</h6>
                   <span className="micCamTest__switchToggle">
                     <SwitchToggle
                       name="micActivatex"
@@ -255,14 +256,12 @@ function MicCamTest(props) {
                       !noMicDevices &&
                       !noDevices &&
                       (Default_Audio_Active ? (
-                        <p className="font-size-8px">
-                          لطفا برای امتحان کردن میکروفون خود صحبت کنید
-                        </p>
+                        <p className="font-size-8px">Speake to Test</p>
                       ) : (
-                        <p className="font-size-8px">میکروفون غیر فعال است</p>
+                        <p className="font-size-8px">Mic Disabled</p>
                       ))}
                     {(noMicDevices || noDevices) && (
-                      <p className="font-size-8px">میکروفون شناسایی نشد</p>
+                      <p className="font-size-8px">No Mic Detected</p>
                     )}
                     {!getDeviceErrorMessage && !noMicDevices && !noDevices && (
                       <>
@@ -286,7 +285,7 @@ function MicCamTest(props) {
                     )}
                   </>
                 </div>
-                <p>انتخاب میکروفن</p>
+                <p>Select Mic</p>
                 <select
                   id="audioSource"
                   ref={_audioSelect}
@@ -323,15 +322,12 @@ function MicCamTest(props) {
 
             <p className="micCamTest__header--subHeader--alert micCamTest__header--subHeader--alert--bottom">
               {!noDevices && !hasStream && (
-                <bdi>
-                  بعد از 'Allow' کردن می توانید میکروفون و دوربین را فعال یا غیر
-                  فعال کنید
-                </bdi>
+                <bdi>After choose "Allow" you can check your device</bdi>
               )}
             </p>
             <div className="micCamTest__buttons">
               <button
-                classes={`micCamTest__buttons--accept ${!hasStream && ""}`}
+                className={`micCamTest__buttons--accept ${!hasStream && ""}`}
                 type="button"
                 disabled={!!getDeviceErrorMessage || noDevices || !hasStream}
                 onClick={handleOnSubmit}
@@ -339,7 +335,7 @@ function MicCamTest(props) {
                 Set Settings
               </button>
               <button
-                classes="micCamTest__buttons--deny"
+                className="micCamTest__buttons--deny"
                 type="button"
                 onClick={handleOnResetSetting}
               >

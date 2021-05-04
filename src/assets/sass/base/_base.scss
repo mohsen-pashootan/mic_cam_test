@@ -39,11 +39,11 @@ button[disabled] {
   opacity: 0.5;
 }
 
-button,
-button:hover {
-  border: none;
-  outline: none;
-}
+// button,
+// button:hover {
+//   border: none;
+//   outline: none;
+// }
 
 .row .col {
   float: right;
@@ -64,7 +64,7 @@ button:hover {
 }
 
 .rtl {
-  direction: rtl;
+  direction: ltr;
 }
 
 ::-webkit-scrollbar {

@@ -6,8 +6,8 @@
   display: inline-block;
   background: #ccc;
   border-radius: 16px;
-  width: 58px;
-  height: 32px;
+  width: 37px;
+  height: 20px;
   position: relative;
   vertical-align: middle;
   transition: background 0.25s;
@@ -20,22 +20,36 @@
     background: linear-gradient(to bottom, #fff 0%, #eee 100%);
     border-radius: 50%;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     position: absolute;
-    top: 4px;
+    top: 2px;
     left: 4px;
     transition: left 0.25s;
+
+    @media only screen and (max-width: 991px) {
+      width: 24px;
+      height: 24px;
+      top: 4px;
+    }
   }
   .toggle:hover &:before {
     background: linear-gradient(to bottom, #fff 0%, #fff 100%);
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
   }
   .toggle-checkbox:checked + & {
-    background: #56c080;
+    background: #149dcc;
     &:before {
-      left: 30px;
+      left: 18px;
+      @media only screen and (max-width: 991px) {
+        left: 30px;
+      }
     }
+  }
+
+  @media only screen and (max-width: 991px) {
+    width: 58px;
+    height: 32px;
   }
 }
 .toggle-checkbox {
