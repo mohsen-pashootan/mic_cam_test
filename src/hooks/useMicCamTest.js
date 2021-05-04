@@ -3,12 +3,7 @@ import { store } from "../App";
 import { createAudioMeter } from "../components/micCamTest/volumeMeter";
 import * as userDevices from "../redux/userDevices/actions";
 
-export default function useMicCamTest({
-  initAudioDev,
-  initVideoDev,
-  Default_Audio_Active,
-  Default_Video_Active,
-}) {
+export default function useMicCamTest({ initAudioDev, initVideoDev }) {
   const [hasStream, setHasStream] = useState();
   const [noDevices, setNoDevices] = useState(false);
   const [noCamDevices, setNoCamDevices] = useState(false);
@@ -30,7 +25,6 @@ export default function useMicCamTest({
   let audioSelect = [_audioSelect];
   let videoSelect = [_videoSelect];
   let canvasContext = _audioMeter.current?.getContext("2d");
-  // store.dispatch(userDevices.micCanvasRef(canvasContext));
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   audioContext = new AudioContext();
 

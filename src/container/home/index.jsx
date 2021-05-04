@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MicCamTest from "../../components/micCamTest/micCamTest";
 import { useSelector } from "react-redux";
+import useMicCamTest from "./../../hooks/useMicCamTest";
 
 export default function Home() {
   const [modalTest, setModaltest] = useState(false);
-  // const { micCanvas } = useSelector((state) => state.selectDeviceStatus);
+  const { initAudioDev, initVideoDev } = useSelector(
+    (state) => state.selectDeviceStatus
+  );
+  const { _audioMeter } = useMicCamTest({ initAudioDev, initVideoDev });
+  const homeVideo = useRef();
 
   const handleTestModalActivate = () => {
     setModaltest(!modalTest);
@@ -14,7 +19,10 @@ export default function Home() {
     setModaltest(false);
   };
 
-  const handleSubmitTestDevice = () => {};
+  const handleSubmitTestDevice = () => {
+    const videoStream = window.stream;
+    homeVideo.current.srcObject = videoStream ? videoStream : "";
+  };
   return (
     <div className="c-main">
       <header className="c-main__header">
@@ -28,9 +36,15 @@ export default function Home() {
         className="c-main__video"
         autoPlay={true}
         muted={true}
+        ref={homeVideo}
         id={localStorage.getItem("selectedCam")}
       />
-      {/* <canvas ref={micCanvas} width="179" height="8"></canvas> */}
+      <canvas
+        ref={_audioMeter}
+        width="179"
+        height="8"
+        className="c-main__canvas"
+      ></canvas>
       {modalTest && (
         <MicCamTest
           onSubmitTestDevice={handleSubmitTestDevice}
