@@ -21,6 +21,13 @@ export default function Home() {
       <button className="c-main__button" onClick={handleTestModalActivate}>
         Test MicCam
       </button>
+
+      <video
+        className="c-main__video"
+        autoPlay={true}
+        muted={true}
+        id={localStorage.getItem("selectedCam")}
+      />
       {modalTest && (
         <MicCamTest
           onSubmitTestDevice={handleSubmitTestDevice}
